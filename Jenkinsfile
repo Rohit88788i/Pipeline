@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('Fetching code from git') {
             steps {
-                git branch: 'jenkins' , url: 'https://github.com/Rohit88788i/DevOps.git'
+               checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Rohit88788i/Pipeline.git']]])
             }
 
         }
