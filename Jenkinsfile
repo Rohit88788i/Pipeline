@@ -12,12 +12,13 @@ pipeline {
             steps {
            sh 'sh script.sh' 
         } 
-        }
-           catch (err) {
+                   catch (err) {
                 currentBuild.result = 'FAILURE'
                 emailExtraMsg = "Build Failure:"+ err.getMessage()
                 throw err
             }
+        }
+        
         
         }
       
