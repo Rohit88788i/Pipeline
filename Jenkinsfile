@@ -9,16 +9,15 @@ pipeline {
         }
 
       stage("build") {
-         steps {
-            try {
-                 sh 'sh script.sh'  
-                 }
+        {
+            sh 'sh script.sh'  
+           }
             catch (err) {
                 currentBuild.result = 'FAILURE'
                 emailExtraMsg = "Build Failure:"+ err.getMessage()
                 throw err
              }
-        }
+        
       }
       
          
