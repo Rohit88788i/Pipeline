@@ -8,17 +8,18 @@ pipeline {
 
         }
 
-      stage("build") {
-        {
-            sh 'sh script.sh'  
-           }
-            catch (err) {
+        stage("build") {
+            steps {
+           sh 'sh script.sh' 
+        } 
+        }
+           catch (err) {
                 currentBuild.result = 'FAILURE'
                 emailExtraMsg = "Build Failure:"+ err.getMessage()
                 throw err
-             }
+            }
         
-      }
+        }
       
          
 
